@@ -45,6 +45,7 @@ def generate_download_events(url_or_queries: str | list, format_type: str, quali
                 "yt-dlp",
                 "-f", format_str,
                 "--merge-output-format", "mp4",
+                "--extractor-args", "youtube:player_client=ios,web",
                 playlist_flag,
                 "--print-json",
                 "--retries", "3",
@@ -59,6 +60,7 @@ def generate_download_events(url_or_queries: str | list, format_type: str, quali
             cmd = [
                 "yt-dlp",
                 "-x", "--audio-format", "mp3", "--audio-quality", quality,
+                "--extractor-args", "youtube:player_client=ios,web",
                 playlist_flag,
                 "--print-json",
                 "--retries", "3",
