@@ -1,0 +1,864 @@
+/* Custom Minecraft Cursors */
+body, html, *, *::before, *::after {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' style='image-rendering:pixelated'%3E%3Crect x='0' y='0' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='0' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='0' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='1' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='7' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='7' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='7' y='7' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='8' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='9' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='13' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='8' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='9' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='10' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='11' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='8' width='1' height='1' fill='%23fde047'/%3E%3Crect x='13' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='14' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='8' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='9' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='10' y='9' width='1' height='1' fill='%23fde047'/%3E%3Crect x='11' y='9' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='12' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='13' y='9' width='1' height='1' fill='%23fde047'/%3E%3Crect x='14' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='8' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='10' y='10' width='1' height='1' fill='%23805030'/%3E%3Crect x='11' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='10' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='13' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='14' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='11' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='8' y='11' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='11' width='1' height='1' fill='%23805030'/%3E%3Crect x='10' y='11' width='1' height='1' fill='%23805030'/%3E%3Crect x='11' y='11' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='11' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='12' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='12' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='12' width='1' height='1' fill='%23fde047'/%3E%3Crect x='8' y='12' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='12' width='1' height='1' fill='%23805030'/%3E%3Crect x='10' y='12' width='1' height='1' fill='%23805030'/%3E%3Crect x='11' y='12' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='10' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3C/svg%3E") 0 0, auto !important;
+}
+
+a, a *, 
+button, button *, 
+select, select *, 
+input, input *, 
+[role="button"], [role="button"] *, 
+.format-btn, .format-btn *, 
+.history-item__dl, .history-item__dl *, 
+#theme-toggle, #theme-toggle *, 
+.history-item, .history-item * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' style='image-rendering:pixelated'%3E%3Crect x='6' y='0' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='0' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='8' y='0' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='1' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='8' y='1' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='9' y='1' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='7' y='2' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='8' y='2' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='7' y='3' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='10' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='11' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='4' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='10' y='5' width='1' height='1' fill='%23fde047'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%23fd9e70'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='13' y='5' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='8' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='9' y='6' width='1' height='1' fill='%23805030'/%3E%3Crect x='10' y='6' width='1' height='1' fill='%23fde047'/%3E%3Crect x='11' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='6' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='13' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='14' y='6' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='8' y='7' width='1' height='1' fill='%23805030'/%3E%3Crect x='9' y='7' width='1' height='1' fill='%23805030'/%3E%3Crect x='10' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='11' y='7' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='12' y='7' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='13' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='14' y='7' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='8' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='7' y='8' width='1' height='1' fill='%23805030'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%23805030'/%3E%3Crect x='9' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='11' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='8' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='13' y='8' width='1' height='1' fill='%2355ffff'/%3E%3Crect x='14' y='8' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='6' y='9' width='1' height='1' fill='%23805030'/%3E%3Crect x='7' y='9' width='1' height='1' fill='%23805030'/%3E%3Crect x='8' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='11' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='9' width='1' height='1' fill='%2333b5e5'/%3E%3Crect x='13' y='9' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='4' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='5' y='10' width='1' height='1' fill='%23805030'/%3E%3Crect x='6' y='10' width='1' height='1' fill='%23805030'/%3E%3Crect x='7' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='11' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='12' y='10' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='11' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='4' y='11' width='1' height='1' fill='%23805030'/%3E%3Crect x='5' y='11' width='1' height='1' fill='%23805030'/%3E%3Crect x='6' y='11' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='12' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='12' width='1' height='1' fill='%23805030'/%3E%3Crect x='4' y='12' width='1' height='1' fill='%23805030'/%3E%3Crect x='5' y='12' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='2' y='13' width='1' height='1' fill='%23805030'/%3E%3Crect x='3' y='13' width='1' height='1' fill='%23805030'/%3E%3Crect x='4' y='13' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='14' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='14' width='1' height='1' fill='%23805030'/%3E%3Crect x='2' y='14' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='3' y='14' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='0' y='15' width='1' height='1' fill='%231a1c1c'/%3E%3Crect x='1' y='15' width='1' height='1' fill='%231a1c1c'/%3E%3C/svg%3E") 12 3, pointer !important;
+}
+
+body {
+    background-color: #7bd0ff; 
+    background-image: 
+        linear-gradient(#f9f9f9 1px, transparent 1px),
+        linear-gradient(90deg, #f9f9f9 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: center;
+}
+
+.voxel-cube {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
+    border: 4px solid #1a1c1c;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.neo-button {
+    border: 4px solid #1a1c1c;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+    transition: all 0.1s ease;
+}
+
+.neo-button:active, .neo-button:disabled {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+}
+
+.neo-card {
+    border: 4px solid #1a1c1c;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+}
+
+.format-btn[aria-pressed="true"] {
+    background-color: #4ade80;
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+}
+
+.hidden { display: none !important; }
+
+/* Pulse Animation for Progress Bar */
+@keyframes pulse-fill {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Toast Notifications */
+.toast {
+    background-color: #ffffff;
+    color: #1a1c1c;
+    border: 4px solid #1a1c1c;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    padding: 12px 18px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(0);
+    transition: transform 0.2s cubic-bezier(.22, 1, .36, 1), opacity 0.2s;
+    pointer-events: auto;
+}
+
+.toast--success {
+    background-color: #4ade80;
+}
+
+.toast--error {
+    background-color: #ffdad6;
+}
+
+.toast--info {
+    background-color: #73ceff;
+}
+
+.toast--closing {
+    transform: translateX(120%);
+    opacity: 0;
+}
+
+/* Platform Badge */
+.platform-tag {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1a1c1c;
+    color: #ffffff;
+    padding: 6px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 2px solid #ffffff;
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.platform-tag--youtube {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.platform-tag--spotify {
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+.platform-tag--generic {
+    border-color: #38bdf8;
+    color: #38bdf8;
+}
+
+/* History Section */
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #ffffff;
+    border: 4px solid #1a1c1c;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-align: left;
+}
+
+.history-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+}
+
+.history-item__platform {
+    width: 36px;
+    height: 36px;
+    border: 2px solid #1a1c1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.history-item__platform--youtube {
+    background-color: #ffdad6;
+    color: #ba1a1a;
+}
+
+.history-item__platform--spotify {
+    background-color: #4ade80;
+    color: #005e2d;
+}
+
+.history-item__platform--generic {
+    background-color: #73ceff;
+    color: #005777;
+}
+
+.history-item__platform svg {
+    width: 20px;
+    height: 20px;
+}
+
+.history-item__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.history-item__title {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1a1c1c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-item__meta {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px;
+    color: #6d7b6d;
+    margin-top: 2px;
+}
+
+.history-item__dl {
+    width: 36px;
+    height: 36px;
+    border: 2px solid #1a1c1c;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+    transition: all 0.1s ease;
+}
+
+.history-item__dl:hover {
+    background-color: #4ade80;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px 0px rgba(0,0,0,1);
+}
+
+.history-item__dl:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+}
+
+.history-item__dl svg {
+    width: 18px;
+    height: 18px;
+    stroke: #1a1c1c;
+}
+
+/* =======================================================
+   DARK THEME STYLING OVERRIDES (Voxel-Brutalist Dark)
+   ======================================================= */
+html.dark body {
+    background-color: #121212;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    color: #ffffff;
+}
+
+html.dark nav {
+    background-color: #1e1e1e !important;
+    border-bottom-color: #000000 !important;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark nav .text-on-background {
+    color: #ffffff !important;
+}
+
+html.dark nav a {
+    color: #ffffff !important;
+}
+
+html.dark nav a.text-primary {
+    color: #4ade80 !important;
+    border-bottom-color: #4ade80 !important;
+}
+
+html.dark nav a:hover {
+    background-color: #4ade80 !important;
+    color: #121212 !important;
+}
+
+html.dark #theme-toggle {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+html.dark #theme-toggle:hover {
+    background-color: #2a2a2a !important;
+}
+
+/* Floating voxel cubes in dark mode */
+html.dark .voxel-cube:nth-child(1) {
+    background-color: #4ade80 !important;
+    border-color: #000000 !important;
+}
+html.dark .voxel-cube:nth-child(2) {
+    background-color: #ff7316 !important;
+    border-color: #000000 !important;
+}
+html.dark .voxel-cube:nth-child(3) {
+    background-color: #33b5e5 !important;
+    border-color: #000000 !important;
+}
+
+/* Header block */
+html.dark h1 {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1) !important;
+}
+
+/* Download card (idle/form) */
+html.dark #download-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #download-card .absolute {
+    background-color: #000000 !important;
+}
+
+html.dark #url-input {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: inset 4px 4px 0px 0px rgba(0,0,0,0.5) !important;
+}
+
+html.dark #url-input::placeholder {
+    color: #777777 !important;
+}
+
+html.dark #paste-btn {
+    background-color: #ff7316 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+html.dark #paste-btn:hover {
+    background-color: #ff8e43 !important;
+}
+
+/* Format Selection buttons */
+html.dark .format-btn {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+html.dark .format-btn[aria-pressed="true"] {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+}
+
+/* Quality Select & Size Loader */
+html.dark #custom-select-trigger {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #custom-select-options {
+    background-color: #121212 !important;
+    border-color: #000000 !important;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1) !important;
+}
+
+.custom-option {
+    background-color: #eeeeee;
+    color: #1a1c1c;
+    border-bottom: 2px solid #1a1c1c;
+    text-align: left;
+    padding: 12px 16px;
+    width: 100%;
+    transition: background-color 0.07s ease, color 0.07s ease;
+}
+
+.custom-option:last-child {
+    border-bottom: none;
+}
+
+.custom-option:hover {
+    background-color: #4ade80 !important;
+    color: #005e2d !important;
+}
+
+html.dark .custom-option {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-bottom-color: #000000 !important;
+}
+
+html.dark .custom-option:hover {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+}
+
+html.dark #size-loader {
+    color: #4ade80 !important;
+}
+
+/* Submit / Rip it button */
+html.dark #download-btn {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+html.dark #download-btn:hover {
+    background-color: #6effa0 !important;
+}
+
+/* Loading Card */
+html.dark #status-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #status-card .absolute {
+    background-color: #000000 !important;
+}
+
+html.dark #status-card h2 {
+    color: #ffffff !important;
+}
+
+html.dark #status-card span.material-symbols-outlined {
+    color: #33b5e5 !important;
+}
+
+html.dark #status-card .w-full {
+    background-color: #121212 !important;
+    border-color: #000000 !important;
+}
+
+html.dark #progress-fill {
+    background-color: #4ade80 !important;
+    border-right-color: #000000 !important;
+}
+
+/* Success Card */
+html.dark #result-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #result-card .absolute {
+    background-color: #000000 !important;
+}
+
+html.dark #result-card span.material-symbols-outlined {
+    color: #4ade80 !important;
+}
+
+html.dark #result-filename {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #result-download {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+html.dark #result-download:hover {
+    background-color: #6effa0 !important;
+}
+
+html.dark #new-download-btn {
+    background-color: #ff7316 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+html.dark #new-download-btn:hover {
+    background-color: #ff8e43 !important;
+}
+
+/* Error Card */
+html.dark #error-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #error-card .absolute {
+    background-color: #000000 !important;
+}
+
+html.dark #error-card span.material-symbols-outlined {
+    color: #ff5555 !important;
+}
+
+html.dark #error-card h2 {
+    color: #ff5555 !important;
+}
+
+html.dark #error-message {
+    background-color: #121212 !important;
+    color: #ff8888 !important;
+    border-color: #000000 !important;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #retry-btn {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+html.dark #retry-btn:hover {
+    background-color: #6effa0 !important;
+}
+
+/* Features Section */
+html.dark #features .neo-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+html.dark #features .neo-card h3 {
+    color: #ffffff !important;
+}
+
+html.dark #features .neo-card p {
+    color: #cccccc !important;
+}
+
+html.dark #features .neo-card:nth-child(1) div {
+    background-color: #ff7316 !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+html.dark #features .neo-card:nth-child(2) div {
+    background-color: #33b5e5 !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+html.dark #features .neo-card:nth-child(3) div {
+    background-color: #4ade80 !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+/* History Section */
+html.dark #history-section {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark #history-section .absolute {
+    background-color: #000000 !important;
+}
+
+html.dark #history-section h2 {
+    color: #ffffff !important;
+}
+
+html.dark .history-item {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark .history-item:hover {
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark .history-item__title {
+    color: #ffffff !important;
+}
+
+html.dark .history-item__meta {
+    color: #999999 !important;
+}
+
+html.dark .history-item__dl {
+    background-color: #1e1e1e !important;
+    border-color: #000000 !important;
+}
+
+html.dark .history-item__dl:hover {
+    background-color: #4ade80 !important;
+}
+
+html.dark .history-item__dl svg {
+    stroke: #ffffff !important;
+}
+
+html.dark .history-item__dl:hover svg {
+    stroke: #000000 !important;
+}
+
+html.dark #clear-history-btn {
+    background-color: #ff5555 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+html.dark #clear-history-btn:hover {
+    background-color: #ff7777 !important;
+}
+
+/* Toasts */
+html.dark .toast {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+html.dark .toast--success {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+}
+
+html.dark .toast--error {
+    background-color: #ff5555 !important;
+    color: #ffffff !important;
+}
+
+html.dark .toast--info {
+    background-color: #33b5e5 !important;
+    color: #000000 !important;
+}
+
+/* =======================================================
+   SEARCH CARDS & RETRO TERMINAL
+   ======================================================= */
+.search-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #ffffff;
+    border: 4px solid #1a1c1c;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    padding: 16px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-align: left;
+}
+
+@media (min-width: 640px) {
+    .search-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.search-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+}
+
+.search-card__thumb-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    flex-shrink: 0;
+    border: 3px solid #1a1c1c;
+    background-color: #000;
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+    .search-card__thumb-container {
+        width: 160px;
+        height: 90px;
+    }
+}
+
+.search-card__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-card__duration {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background-color: #1a1c1c;
+    color: #ffffff;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 2px 6px;
+    font-weight: 700;
+    border: 1px solid #ffffff;
+}
+
+.search-card__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.search-card__title {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1a1c1c;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.search-card__meta {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    color: #6d7b6d;
+    margin-top: 4px;
+}
+
+.search-card__actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .search-card__actions {
+        width: auto;
+        flex-shrink: 0;
+    }
+}
+
+/* Dark mode for search cards */
+html.dark .search-card {
+    background-color: #1e1e1e !important;
+    border-color: #000000 !important;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark .search-card:hover {
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1) !important;
+}
+
+html.dark .search-card__title {
+    color: #ffffff !important;
+}
+
+html.dark .search-card__meta {
+    color: #aaaaaa !important;
+}
+
+html.dark .search-card__thumb-container {
+    border-color: #000000 !important;
+}
+
+/* Retro CRT scanlines look for terminal console */
+#terminal-console {
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+}
+
+#download-btn.search-mode-active,
+html.dark #download-btn.search-mode-active {
+    background-color: #fd9e70 !important;
+    color: #1a1c1c !important;
+}
+
+#download-btn.search-mode-active:hover,
+html.dark #download-btn.search-mode-active:hover {
+    background-color: #ffb693 !important;
+}
+
+/* =======================================================
+   QUEUE SECTION — DARK MODE
+   ======================================================= */
+html.dark #queue-section {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+html.dark #queue-section .absolute { background-color: #000000 !important; }
+html.dark #queue-section h2 { color: #ffffff !important; }
+html.dark #queue-count {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+}
+html.dark #queue-list > div {
+    border-color: #000000 !important;
+}
+html.dark #start-queue-btn {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+html.dark #clear-queue-btn {
+    background-color: #ff5555 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+/* =======================================================
+   TAG EDITOR — DARK MODE
+   ======================================================= */
+html.dark #tag-editor {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1) !important;
+}
+html.dark #tag-editor .absolute { background-color: #000000 !important; }
+html.dark #tag-editor h2 { color: #ffffff !important; }
+html.dark #tag-title,
+html.dark #tag-artist,
+html.dark #tag-album {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+html.dark #apply-tags-btn {
+    background-color: #4ade80 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+/* =======================================================
+   DISK STATS BADGE — DARK MODE
+   ======================================================= */
+html.dark #disk-stats {
+    background-color: #1e1e1e !important;
+    color: #aaaaaa !important;
+    border-color: #000000 !important;
+}
+
+/* =======================================================
+   ADD-TO-QUEUE BUTTON — DARK MODE
+   ======================================================= */
+html.dark #add-to-queue-btn {
+    background-color: #ff7316 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+html.dark #add-to-queue-btn:hover {
+    background-color: #ff8e43 !important;
+}
+
+
+

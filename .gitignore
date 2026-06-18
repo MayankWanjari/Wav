@@ -1,0 +1,22 @@
+# Secret key — never commit this
+.secret_key
+
+# Environment variables
+.env
+
+# Downloads folder
+downloads/
+
+# History
+history.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db

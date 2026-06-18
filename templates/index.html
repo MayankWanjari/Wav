@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<script>
+    (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.className = theme;
+    })();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediaForge - Any Media Link to MP3 or MP4!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1a1c1c",
+                        "primary": "#006d36",
+                        "primary-container": "#4ade80",
+                        "primary-fixed-dim": "#4de082",
+                        "secondary-container": "#fd9e70",
+                        "tertiary-container": "#73ceff",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "surface-container-high": "#e8e8e8",
+                        "on-surface-variant": "#3d4a3e"
+                    },
+                    "spacing": { "gutter": "24px", "margin": "32px" },
+                    "fontFamily": {
+                        "display-lg": ["Space Mono"],
+                        "headline-lg-mobile": ["Space Mono"],
+                        "headline-lg": ["Space Mono"],
+                        "body-md": ["Bricolage Grotesque"],
+                        "body-lg": ["Bricolage Grotesque"],
+                        "label-sm": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.0">
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-on-background relative overflow-x-hidden pt-24 pb-20 md:pb-0">
+
+<div class="voxel-cube top-32 left-10 hidden md:block" style="animation-delay: 0s;"></div>
+<div class="voxel-cube top-64 right-20 hidden md:block" style="animation-delay: 1s; width: 64px; height: 64px; background-color: #fd9e70;"></div>
+<div class="voxel-cube bottom-40 left-1/4 hidden md:block" style="animation-delay: 2s; width: 32px; height: 32px; background-color: #ffdad6;"></div>
+
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 bg-surface border-b-[4px] border-on-background shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+    <div class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background uppercase tracking-tighter">
+        MEDIA FORGE
+    </div>
+    <div class="flex gap-4 items-center">
+        <div class="hidden md:flex gap-6 items-center">
+            <a class="nav-link font-label-sm text-label-sm text-primary border-b-[4px] border-primary pb-1" href="#">Home</a>
+            <a class="nav-link font-label-sm text-label-sm text-on-background hover:bg-primary-container hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-75 p-2" href="#features">Features</a>
+            <a class="nav-link font-label-sm text-label-sm text-on-background hover:bg-tertiary-container hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-75 p-2 flex items-center gap-1" href="/files">
+                <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">folder</span> Vault
+            </a>
+        </div>
+        <span id="disk-stats" class="hidden font-label-sm text-xs border-[2px] border-on-background px-2 py-1 bg-surface-container text-on-surface-variant"></span>
+        <button id="theme-toggle" class="neo-button bg-surface hover:bg-[#eeeeee] p-2 flex items-center justify-center text-on-background transition-all duration-75 shrink-0" aria-label="Toggle Theme">
+            <span id="theme-icon" class="material-symbols-outlined select-none text-2xl" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+        </button>
+        <a href="/logout" class="neo-button bg-[#ffdad6] hover:bg-[#ffb4ab] p-2 flex items-center justify-center text-[#93000a] transition-all duration-75 shrink-0" aria-label="Logout" title="Logout">
+            <span class="material-symbols-outlined select-none text-2xl">logout</span>
+        </a>
+    </div>
+</nav>
+
+<main class="flex-grow flex flex-col items-center justify-center px-4 md:px-gutter py-margin relative z-10 w-full max-w-5xl mx-auto">
+    <header class="text-center mb-12 mt-8">
+        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg bg-surface inline-block border-[4px] border-on-background p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-4">
+            Any Media Link to MP3 or MP4!
+        </h1>
+    </header>
+
+    <!-- STATE 1: IDLE / DOWNLOADING FORM -->
+    <section id="download-card" class="neo-card w-full max-w-3xl bg-[#fde047] p-8 md:p-12 mb-16 relative">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        
+        <form id="download-form" class="flex flex-col gap-8">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <div class="relative flex-grow">
+                    <input class="w-full bg-surface border-[4px] border-on-background p-6 pr-32 font-display-lg text-body-lg shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)] focus:outline-none focus:ring-0 rounded-none placeholder:text-[#6d7b6d]" 
+                           id="url-input" placeholder="Paste your link here... (YouTube, SoundCloud, etc.)" type="text" autocomplete="off" required />
+                    
+                    <!-- Platform Badge -->
+                    <div id="platform-badge" class="hidden platform-tag">
+                        <span id="platform-dot" class="hidden"></span>
+                        <span id="platform-text">Platform</span>
+                    </div>
+                </div>
+                <button type="button" id="paste-btn" class="neo-button bg-[#fd9e70] hover:bg-[#ffb693] px-6 py-4 font-headline-lg text-body-lg flex items-center justify-center gap-2 text-on-background shrink-0">
+                    <span class="material-symbols-outlined">content_paste</span> PASTE
+                </button>
+            </div>
+
+            <div id="format-group" class="flex flex-col gap-6">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <button type="button" aria-pressed="true" value="audio" class="format-btn neo-button flex-1 bg-surface py-4 px-6 font-headline-lg text-body-lg flex items-center justify-center gap-2" onclick="toggleFormat(this)">
+                        <span class="material-symbols-outlined">audio_file</span> MP3 (Audio)
+                    </button>
+                    <button type="button" aria-pressed="false" value="video" class="format-btn neo-button flex-1 bg-surface py-4 px-6 font-headline-lg text-body-lg flex items-center justify-center gap-2" onclick="toggleFormat(this)">
+                        <span class="material-symbols-outlined">video_file</span> MP4 (Video)
+                    </button>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="flex-1 w-full relative" id="custom-select-container">
+                        <!-- Custom Select Trigger Button -->
+                        <button type="button" id="custom-select-trigger" class="w-full bg-surface-container border-[4px] border-on-background p-4 font-label-sm text-on-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-none focus:translate-x-[2px] focus:translate-y-[2px] transition-all duration-75 text-left flex justify-between items-center focus:outline-none">
+                            <span id="custom-select-value">320kbps (Best)</span>
+                            <span class="material-symbols-outlined transition-transform duration-200" id="custom-select-arrow">expand_more</span>
+                        </button>
+                        <!-- Custom Select Options List -->
+                        <div id="custom-select-options" class="absolute left-0 right-0 mt-2 bg-surface-container border-[4px] border-on-background shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-40 hidden flex flex-col">
+                            <!-- Dynamic options populated in app.js -->
+                        </div>
+                        <!-- Hidden input to store value -->
+                        <input type="hidden" id="quality-select" value="320K">
+                    </div>
+                    <span class="font-label-sm text-primary animate-pulse whitespace-nowrap hidden" id="size-loader">(Fetching sizes...)</span>
+                </div>
+            </div>
+            <!-- Spotify Playlist Preview Container -->
+            <div id="spotify-preview-section" class="hidden mt-8 pt-8 border-t-4 border-on-background">
+                <div class="flex items-center gap-4 mb-6">
+                    <img id="preview-list-cover" class="w-16 h-16 border-4 border-on-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] object-cover bg-black" src="" alt="Cover">
+                    <div class="text-left">
+                        <h3 class="font-display-lg text-body-lg uppercase tracking-tight" id="preview-list-title">Playlist Title</h3>
+                        <p class="font-label-sm text-on-surface-variant" id="preview-list-count">0 tracks loaded</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center mb-4 bg-on-background text-surface px-4 py-2 font-label-sm uppercase">
+                    <span>Tracklist Preview</span>
+                    <button type="button" id="preview-select-all" class="text-xs underline font-mono text-primary-container hover:text-white">Deselect All</button>
+                </div>
+
+                <div id="spotify-track-list" class="max-h-96 overflow-y-auto border-4 border-on-background bg-surface divide-y-2 divide-on-background shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)] mb-6 text-left">
+                    <!-- Dynamic playlist track items -->
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <button type="submit" id="download-btn" class="neo-button flex-1 bg-primary-container hover:bg-primary-fixed-dim py-6 font-display-lg text-headline-lg flex items-center justify-center gap-4 text-[#005e2d]">
+                    <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">download</span>
+                    <span id="convert-label">RIP IT!</span>
+                </button>
+                <button type="button" id="add-to-queue-btn" class="neo-button bg-[#fd9e70] hover:bg-[#ffb693] px-6 font-display-lg text-body-lg flex items-center justify-center gap-2 text-on-background" title="Add to download queue">
+                    <span class="material-symbols-outlined text-3xl">add_to_queue</span>
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <!-- SEARCH RESULTS SECTION -->
+    <section id="search-section" class="neo-card w-full max-w-3xl bg-surface p-8 mb-16 relative hidden">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        
+        <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg mb-6 uppercase text-center">SEARCH RESULTS</h2>
+        <div id="search-results-list" class="grid grid-cols-1 gap-6">
+            <!-- Dynamic search result cards populated by app.js -->
+        </div>
+    </section>
+
+    <!-- STATE 2: LOADING -->
+    <section id="status-card" class="neo-card w-full max-w-3xl bg-[#73ceff] p-8 md:p-12 mb-16 relative hidden text-center">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        
+        <span class="material-symbols-outlined text-6xl animate-spin mb-4 inline-block">autorenew</span>
+        <h2 id="status-text" class="font-display-lg text-headline-lg-mobile md:text-headline-lg mb-8 uppercase">Crafting your file...</h2>
+        
+        <div class="w-full bg-surface border-[4px] border-on-background h-8 relative shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)] mb-4">
+            <div id="progress-fill" class="h-full bg-primary-container border-r-[4px] border-on-background transition-all duration-300" style="width: 0%; animation: pulse-fill 2s infinite;"></div>
+        </div>
+
+        <!-- Retro Terminal Console -->
+        <div class="mt-8 text-left">
+            <div class="flex justify-between items-center bg-on-background text-surface px-4 py-2 font-label-sm uppercase border-[4px] border-b-0 border-on-background dark:border-black">
+                <span class="dark:text-white">SYSTEM LOG CONSOLE</span>
+                <span class="flex gap-2">
+                    <span class="w-3 h-3 bg-[#ff5555] border-[2px] border-on-background rounded-none inline-block"></span>
+                    <span class="w-3 h-3 bg-[#fde047] border-[2px] border-on-background rounded-none inline-block"></span>
+                    <span class="w-3 h-3 bg-[#4ade80] border-[2px] border-on-background rounded-none inline-block"></span>
+                </span>
+            </div>
+            <pre id="terminal-console" class="w-full bg-black text-[#39ff14] border-[4px] border-on-background p-4 h-48 overflow-y-auto font-mono text-xs select-text shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.5)] dark:border-black rounded-none"></pre>
+        </div>
+    </section>
+
+    <!-- STATE 3: SUCCESS -->
+    <section id="result-card" class="neo-card w-full max-w-3xl bg-[#4ade80] p-8 md:p-12 mb-16 relative hidden text-center">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        
+        <span class="material-symbols-outlined text-6xl mb-4 inline-block">check_circle</span>
+        <h2 id="result-title" class="font-display-lg text-headline-lg-mobile md:text-headline-lg mb-2 uppercase">Success!</h2>
+        <p id="result-filename" class="font-body-md bg-surface p-2 border-[4px] border-on-background inline-block mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">filename.mp3</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a id="result-download" href="#" class="neo-button bg-surface py-4 px-8 font-headline-lg text-body-lg inline-flex items-center justify-center gap-2" download>
+                <span class="material-symbols-outlined">download</span>
+                <span id="result-download-text">SAVE FILE</span>
+            </a>
+            <button id="new-download-btn" class="neo-button bg-[#fd9e70] py-4 px-8 font-headline-lg text-body-lg inline-flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">replay</span> ANOTHER ONE
+            </button>
+        </div>
+    </section>
+
+    <!-- STATE 4: ERROR -->
+    <section id="error-card" class="neo-card w-full max-w-3xl bg-[#ffdad6] p-8 md:p-12 mb-16 relative hidden text-center">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        
+        <span class="material-symbols-outlined text-6xl mb-4 inline-block text-[#93000a]">error</span>
+        <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg mb-4 uppercase text-[#93000a]">Game Over!</h2>
+        <p id="error-message" class="font-body-lg mb-8 bg-surface p-4 border-[4px] border-on-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] inline-block">Conversion failed.</p>
+        
+        <button id="retry-btn" class="neo-button bg-surface py-4 px-8 font-headline-lg text-body-lg inline-flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">refresh</span> TRY AGAIN
+        </button>
+    </section>
+
+    <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl">
+        <div class="neo-card feature-card bg-surface p-6 flex flex-col items-center text-center gap-4 hover:-translate-y-2 transition-transform">
+            <div class="w-16 h-16 bg-secondary-container border-[4px] border-on-background flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span class="material-symbols-outlined text-3xl">workspace_premium</span>
+            </div>
+            <h3 class="font-headline-lg text-body-lg uppercase mt-2">Top Quality</h3>
+            <p class="font-body-md text-on-surface-variant">Max quality extraction for pristine playback.</p>
+        </div>
+        <div class="neo-card feature-card bg-surface p-6 flex flex-col items-center text-center gap-4 hover:-translate-y-2 transition-transform">
+            <div class="w-16 h-16 bg-tertiary-container border-[4px] border-on-background flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span class="material-symbols-outlined text-3xl">bolt</span>
+            </div>
+            <h3 class="font-headline-lg text-body-lg uppercase mt-2">Super Fast</h3>
+            <p class="font-body-md text-on-surface-variant">Blink and your download is ready.</p>
+        </div>
+        <div class="neo-card feature-card bg-surface p-6 flex flex-col items-center text-center gap-4 hover:-translate-y-2 transition-transform">
+            <div class="w-16 h-16 bg-error-container border-[4px] border-on-background flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <span class="material-symbols-outlined text-3xl">money_off</span>
+            </div>
+            <h3 class="font-headline-lg text-body-lg uppercase mt-2">Free</h3>
+            <p class="font-body-md text-on-surface-variant">No coins needed in this arcade.</p>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD HISTORY -->
+    <section id="history-section" class="neo-card w-full max-w-3xl bg-surface p-8 mb-16 relative hidden text-center mt-12">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        
+        <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg mb-6 uppercase">DOWNLOAD HISTORY</h2>
+        
+        <div id="history-list" class="max-w-2xl mx-auto mb-6">
+            <!-- Dynamic history items go here -->
+        </div>
+        
+        <div id="history-empty" class="hidden mb-6 text-on-surface-variant font-body-md">
+            No history yet. Start ripping some files!
+        </div>
+        
+        <button id="clear-history-btn" class="neo-button bg-error-container text-on-error-container hover:bg-[#ffdad6] py-3 px-6 font-headline-lg text-body-md inline-flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">delete</span> CLEAR HISTORY
+        </button>
+    </section>
+
+    <!-- DOWNLOAD QUEUE -->
+    <section id="queue-section" class="neo-card w-full max-w-3xl bg-surface p-8 mb-16 relative hidden mt-12">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+            <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg uppercase">DOWNLOAD QUEUE</h2>
+            <span id="queue-count" class="font-label-sm bg-on-background text-surface px-3 py-1">0 items</span>
+        </div>
+
+        <div id="queue-list" class="flex flex-col gap-3 mb-6"></div>
+
+        <div class="flex gap-4 flex-wrap">
+            <button id="start-queue-btn" class="neo-button flex-1 bg-primary-container hover:bg-primary-fixed-dim py-4 font-headline-lg text-body-lg text-[#005e2d] flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_circle</span> START QUEUE
+            </button>
+            <button id="clear-queue-btn" class="neo-button bg-error-container hover:bg-[#ffdad6] py-4 px-6 font-headline-lg text-body-md text-[#93000a] flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">delete_sweep</span> CLEAR
+            </button>
+        </div>
+    </section>
+
+    <!-- TAG EDITOR -->
+    <section id="tag-editor" class="neo-card w-full max-w-3xl bg-[#73ceff] p-8 mb-16 relative hidden mt-4">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+
+        <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg uppercase flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">edit</span> Edit ID3 Tags
+        </h2>
+
+        <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm uppercase" for="tag-title">Title</label>
+                <input id="tag-title" type="text" class="w-full bg-surface border-[4px] border-on-background p-4 font-body-md focus:outline-none rounded-none shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)]" placeholder="Song title..." />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm uppercase" for="tag-artist">Artist</label>
+                <input id="tag-artist" type="text" class="w-full bg-surface border-[4px] border-on-background p-4 font-body-md focus:outline-none rounded-none shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)]" placeholder="Artist name..." />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm uppercase" for="tag-album">Album</label>
+                <input id="tag-album" type="text" class="w-full bg-surface border-[4px] border-on-background p-4 font-body-md focus:outline-none rounded-none shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)]" placeholder="Album name..." />
+            </div>
+            <button id="apply-tags-btn" class="neo-button w-full bg-on-background text-surface hover:bg-[#333] py-4 font-headline-lg text-body-lg flex items-center justify-center gap-3">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span> APPLY TAGS
+            </button>
+        </div>
+    </section>
+
+    <!-- Confetti & Toasts -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 hidden"></canvas>
+    <div id="toast-container" class="toast-container fixed bottom-4 right-4 z-50 flex flex-col gap-3"></div>
+
+    <!-- SEARCH/MATCH MODAL -->
+    <div id="match-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+        <div class="neo-card w-full max-w-2xl bg-surface p-6 relative flex flex-col max-h-[85vh]">
+            <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+            <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+            
+            <div class="flex justify-between items-center border-b-4 border-on-background pb-3 mb-4">
+                <h3 class="font-display-lg text-headline-lg-mobile uppercase" id="match-modal-title">Match Video</h3>
+                <button type="button" id="close-match-modal" class="neo-button bg-[#ffdad6] text-[#93000a] p-1 flex items-center justify-center">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <!-- Quick Search Input -->
+            <div class="flex gap-2 mb-4">
+                <input type="text" id="match-modal-search-input" class="flex-grow bg-surface border-4 border-on-background p-3 font-body-md text-sm shadow-[inset_2px_2px_0px_0px_rgba(0,0,0,0.1)] focus:outline-none dark:text-black" placeholder="Search YouTube manually..." />
+                <button type="button" id="match-modal-search-btn" class="neo-button bg-primary-container hover:bg-primary-fixed-dim px-4 py-2 font-label-sm text-sm text-[#005e2d] flex items-center gap-1">
+                    <span class="material-symbols-outlined">search</span> SEARCH
+                </button>
+            </div>
+            
+            <div id="match-modal-results" class="flex-grow overflow-y-auto divide-y-2 divide-on-background border-4 border-on-background bg-white dark:bg-[#121212] shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)]">
+                <!-- Search results will be rendered here -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function toggleFormat(clickedBtn) {
+        const buttons = document.querySelectorAll('.format-btn');
+        buttons.forEach(btn => {
+            btn.setAttribute('aria-pressed', 'false');
+        });
+        clickedBtn.setAttribute('aria-pressed', 'true');
+        // Trigger custom event so app.js can pick up the change
+        clickedBtn.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // Theme Toggle Logic
+    document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("theme-toggle");
+        const toggleIcon = document.getElementById("theme-icon");
+        
+        const updateIcon = (theme) => {
+            if (theme === "dark") {
+                toggleIcon.textContent = "light_mode";
+            } else {
+                toggleIcon.textContent = "dark_mode";
+            }
+        };
+
+        // Initial setup
+        const currentTheme = document.documentElement.className;
+        updateIcon(currentTheme);
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener("click", () => {
+                const isDark = document.documentElement.classList.contains("dark");
+                const newTheme = isDark ? "light" : "dark";
+                
+                document.documentElement.className = newTheme;
+                localStorage.setItem("theme", newTheme);
+                updateIcon(newTheme);
+            });
+        }
+    });
+</script>
+<script src="/static/js/app.js?v=4"></script>
+</body>
+</html>

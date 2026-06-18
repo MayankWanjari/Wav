@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<script>
+    (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.className = theme;
+    })();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediaForge - File Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-background": "#1a1c1c",
+                    "primary": "#006d36",
+                    "primary-container": "#4ade80",
+                    "primary-fixed-dim": "#4de082",
+                    "secondary-container": "#fd9e70",
+                    "tertiary-container": "#73ceff",
+                    "error-container": "#ffdad6",
+                    "surface": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "on-surface-variant": "#3d4a3e"
+                },
+                "spacing": { "gutter": "24px", "margin": "32px" },
+                "fontFamily": {
+                    "display-lg": ["Space Mono"],
+                    "headline-lg": ["Space Mono"],
+                    "body-md": ["Bricolage Grotesque"],
+                    "body-lg": ["Bricolage Grotesque"],
+                    "label-sm": ["Space Mono"]
+                },
+                "fontSize": {
+                    "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "500" }],
+                    "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                    "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "700" }]
+                }
+            }
+        }
+    }
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.0">
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-on-background pt-24 pb-20">
+
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 bg-surface border-b-[4px] border-on-background shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+    <div class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase tracking-tighter">
+        MEDIA FORGE
+    </div>
+    <div class="flex gap-3 items-center">
+        <a href="/" class="neo-button bg-surface hover:bg-surface-container px-4 py-2 font-label-sm text-on-background flex items-center gap-2">
+            <span class="material-symbols-outlined text-xl">arrow_back</span> BACK
+        </a>
+        <button id="theme-toggle" class="neo-button bg-surface hover:bg-[#eeeeee] p-2 flex items-center justify-center text-on-background transition-all duration-75 shrink-0">
+            <span id="theme-icon" class="material-symbols-outlined select-none text-2xl" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+        </button>
+    </div>
+</nav>
+
+<main class="flex-grow flex flex-col items-center px-4 md:px-gutter py-margin w-full max-w-5xl mx-auto">
+    <header class="text-center mb-10 mt-4">
+        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg bg-surface inline-block border-[4px] border-on-background p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-4">
+            FILE VAULT
+        </h1>
+    </header>
+
+    <!-- Stats bar -->
+    <div class="w-full max-w-3xl flex items-center justify-between border-[4px] border-on-background bg-[#fde047] px-6 py-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-8 flex-wrap gap-4">
+        <div class="flex gap-6 items-center">
+            <span class="font-label-sm uppercase"><span id="file-count">—</span> Files</span>
+            <span class="font-label-sm uppercase">·</span>
+            <span class="font-label-sm uppercase"><span id="total-size">—</span> Used</span>
+        </div>
+        <div class="flex gap-3">
+            <button id="refresh-btn" class="neo-button bg-surface hover:bg-surface-container px-4 py-2 font-label-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">refresh</span> REFRESH
+            </button>
+            <button id="delete-all-btn" class="neo-button bg-error-container hover:bg-[#ffc1ba] text-[#93000a] px-4 py-2 font-label-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">delete_sweep</span> DELETE ALL
+            </button>
+        </div>
+    </div>
+
+    <!-- File list -->
+    <div id="file-list" class="w-full max-w-3xl flex flex-col gap-4">
+        <div class="text-center py-12 font-label-sm animate-pulse">Loading vault...</div>
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="hidden w-full max-w-3xl neo-card bg-surface p-12 text-center relative">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+        <span class="material-symbols-outlined text-6xl text-on-surface-variant mb-4 block">folder_open</span>
+        <p class="font-headline-lg text-headline-lg-mobile uppercase">Vault is Empty</p>
+        <p class="font-body-md text-on-surface-variant mt-2">Files are auto-deleted after 10 minutes</p>
+        <a href="/" class="neo-button inline-flex items-center gap-2 bg-primary-container hover:bg-primary-fixed-dim text-[#005e2d] px-6 py-3 font-label-sm mt-6">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span> DOWNLOAD SOMETHING
+        </a>
+    </div>
+
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-3"></div>
+</main>
+
+<script>
+(function () {
+    // Theme toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const toggleIcon = document.getElementById('theme-icon');
+    function updateIcon(t) { toggleIcon.textContent = t === 'dark' ? 'light_mode' : 'dark_mode'; }
+    updateIcon(document.documentElement.className);
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const next = isDark ? 'light' : 'dark';
+            document.documentElement.className = next;
+            localStorage.setItem('theme', next);
+            updateIcon(next);
+        });
+    }
+
+    function formatBytes(b) {
+        if (!b || b === 0) return '0 Bytes';
+        const k = 1024, s = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(b) / Math.log(k));
+        return parseFloat((b / Math.pow(k, i)).toFixed(2)) + ' ' + s[i];
+    }
+
+    function formatAge(ts) {
+        const diff = Math.floor((Date.now() / 1000) - ts);
+        if (diff < 60) return diff + 's ago';
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        return Math.floor(diff / 3600) + 'h ago';
+    }
+
+    function escapeHtml(str) {
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
+    function showToast(msg, type = 'info') {
+        const c = document.getElementById('toast-container');
+        if (!c) return;
+        const t = document.createElement('div');
+        const colors = { success: '#4ade80', error: '#ffdad6', info: '#73ceff' };
+        t.style.cssText = `background:${colors[type]||colors.info};border:4px solid #1a1c1c;box-shadow:4px 4px 0 rgba(0,0,0,1);padding:12px 18px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:transform .2s,opacity .2s`;
+        t.textContent = msg;
+        c.appendChild(t);
+        setTimeout(() => { t.style.transform = 'translateX(120%)'; t.style.opacity = '0'; setTimeout(() => t.remove(), 220); }, 3500);
+    }
+
+    let files = [];
+
+    async function loadFiles() {
+        const list = document.getElementById('file-list');
+        const empty = document.getElementById('empty-state');
+        list.innerHTML = '<div class="text-center py-12 font-label-sm animate-pulse">Loading vault...</div>';
+        empty.classList.add('hidden');
+
+        try {
+            const res = await fetch('/api/files');
+            const data = await res.json();
+            if (!data.success) throw new Error();
+            files = data.files;
+
+            const totalSize = files.reduce((s, f) => s + f.size, 0);
+            document.getElementById('file-count').textContent = files.length;
+            document.getElementById('total-size').textContent = formatBytes(totalSize);
+
+            if (files.length === 0) {
+                list.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            list.innerHTML = files.map(f => `
+                <div class="flex items-center gap-4 border-[4px] border-on-background bg-surface p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform" data-name="${escapeHtml(f.name)}">
+                    <span class="material-symbols-outlined text-3xl text-on-surface-variant shrink-0">${f.name.endsWith('.mp4') ? 'video_file' : f.name.endsWith('.zip') ? 'folder_zip' : 'audio_file'}</span>
+                    <div class="flex-grow min-w-0">
+                        <p class="font-display-lg text-body-md truncate font-bold">${escapeHtml(f.name)}</p>
+                        <p class="font-body-md text-xs text-on-surface-variant">${formatBytes(f.size)} · ${formatAge(f.modified)}</p>
+                    </div>
+                    <div class="flex gap-2 shrink-0">
+                        <a href="/api/file/${encodeURIComponent(f.name)}" download="${escapeHtml(f.name)}"
+                           class="neo-button bg-primary-container hover:bg-primary-fixed-dim text-[#005e2d] p-2 flex items-center justify-center" title="Download">
+                            <span class="material-symbols-outlined text-xl">download</span>
+                        </a>
+                        <button type="button" class="delete-btn neo-button bg-error-container hover:bg-[#ffc1ba] text-[#93000a] p-2 flex items-center justify-center" data-name="${escapeHtml(f.name)}" title="Delete">
+                            <span class="material-symbols-outlined text-xl">delete</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            list.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => deleteFile(btn.getAttribute('data-name')));
+            });
+
+        } catch {
+            list.innerHTML = '<div class="text-center py-12 font-label-sm text-red-500">Failed to load files.</div>';
+        }
+    }
+
+    async function deleteFile(name) {
+        try {
+            const res = await fetch(`/api/files/${encodeURIComponent(name)}`, { method: 'DELETE' });
+            const data = await res.json();
+            if (data.success) {
+                showToast('File deleted.', 'success');
+                loadFiles();
+            } else {
+                showToast('Delete failed: ' + data.error, 'error');
+            }
+        } catch {
+            showToast('Delete failed.', 'error');
+        }
+    }
+
+    async function deleteAll() {
+        if (!files.length) return;
+        if (!confirm(`Delete all ${files.length} file(s)? This cannot be undone.`)) return;
+        await Promise.all(files.map(f => fetch(`/api/files/${encodeURIComponent(f.name)}`, { method: 'DELETE' })));
+        showToast('All files deleted.', 'success');
+        loadFiles();
+    }
+
+    document.getElementById('refresh-btn').addEventListener('click', loadFiles);
+    document.getElementById('delete-all-btn').addEventListener('click', deleteAll);
+
+    loadFiles();
+    setInterval(loadFiles, 30_000);
+})();
+</script>
+</body>
+</html>

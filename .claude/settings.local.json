@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/Scripts/pip freeze *)",
+      "Bash(.venv/Scripts/python -c \"from app import create_app; app = create_app\\(\\); print\\('OK'\\)\")",
+      "Bash(.venv/Scripts/pytest tests/ -v)",
+      "Bash(.venv/Scripts/python -c \"from app import create_app; create_app\\(\\); print\\('OK'\\)\")",
+      "Bash(.venv/Scripts/pytest tests/ -q)"
+    ]
+  }
+}

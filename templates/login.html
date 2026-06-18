@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<script>
+    (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.className = theme;
+    })();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediaForge - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-background": "#1a1c1c",
+                    "primary": "#006d36",
+                    "primary-container": "#4ade80",
+                    "primary-fixed-dim": "#4de082",
+                    "secondary-container": "#fd9e70",
+                    "tertiary-container": "#73ceff",
+                    "error-container": "#ffdad6",
+                    "surface": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "surface-container-high": "#e8e8e8",
+                    "on-surface-variant": "#3d4a3e"
+                },
+                "spacing": { "gutter": "24px", "margin": "32px" },
+                "fontFamily": {
+                    "display-lg": ["Space Mono"],
+                    "headline-lg-mobile": ["Space Mono"],
+                    "headline-lg": ["Space Mono"],
+                    "body-md": ["Bricolage Grotesque"],
+                    "body-lg": ["Bricolage Grotesque"],
+                    "label-sm": ["Space Mono"]
+                },
+                "fontSize": {
+                    "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "500" }],
+                    "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                    "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "700" }]
+                }
+            }
+        }
+    }
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.0">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center font-body-md text-on-background relative overflow-hidden bg-surface">
+
+<div class="voxel-cube top-16 left-10 hidden md:block" style="animation-delay: 0s;"></div>
+<div class="voxel-cube bottom-24 right-16 hidden md:block" style="animation-delay: 1s; width: 64px; height: 64px; background-color: #fd9e70;"></div>
+<div class="voxel-cube top-1/2 left-4 hidden md:block" style="animation-delay: 2s; width: 32px; height: 32px; background-color: #73ceff;"></div>
+
+<div class="w-full max-w-md px-4 relative z-10">
+    <div class="text-center mb-8">
+        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background uppercase tracking-tighter inline-block bg-surface border-[4px] border-on-background px-4 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            MEDIA FORGE
+        </h1>
+    </div>
+
+    <div class="relative bg-[#fde047] border-[4px] border-on-background p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div class="absolute -top-4 -left-4 w-8 h-8 bg-on-background"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-on-background"></div>
+
+        <div class="flex items-center gap-3 mb-8">
+            <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">lock</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile uppercase">Admin Login</h2>
+        </div>
+
+        {% if error %}
+        <div class="bg-error-container border-[4px] border-on-background p-4 mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-3">
+            <span class="material-symbols-outlined text-[#93000a]">error</span>
+            <p class="font-label-sm text-[#93000a]">{{ error }}</p>
+        </div>
+        {% endif %}
+
+        <form method="POST" class="flex flex-col gap-6" autocomplete="off">
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm text-on-background uppercase" for="username">Username</label>
+                <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    class="w-full bg-surface border-[4px] border-on-background p-4 font-body-md text-on-background shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)] focus:outline-none rounded-none placeholder:text-[#6d7b6d]"
+                    placeholder="admin"
+                    required
+                    autocomplete="username"
+                    autofocus
+                />
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-label-sm text-on-background uppercase" for="password">Password</label>
+                <div class="relative">
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        class="w-full bg-surface border-[4px] border-on-background p-4 pr-14 font-body-md text-on-background shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)] focus:outline-none rounded-none placeholder:text-[#6d7b6d]"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="current-password"
+                    />
+                    <button
+                        type="button"
+                        id="toggle-pw"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-background transition-colors"
+                        aria-label="Toggle password visibility"
+                    >
+                        <span class="material-symbols-outlined" id="pw-eye-icon">visibility</span>
+                    </button>
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                class="neo-button w-full bg-primary-container hover:bg-primary-fixed-dim py-5 font-display-lg text-headline-lg-mobile text-[#005e2d] flex items-center justify-center gap-3 mt-2"
+            >
+                <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">login</span>
+                ENTER
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const toggleBtn = document.getElementById('toggle-pw');
+    const pwInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('pw-eye-icon');
+    toggleBtn.addEventListener('click', () => {
+        const isHidden = pwInput.type === 'password';
+        pwInput.type = isHidden ? 'text' : 'password';
+        eyeIcon.textContent = isHidden ? 'visibility_off' : 'visibility';
+    });
+</script>
+</body>
+</html>

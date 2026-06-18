@@ -1,0 +1,16 @@
+{
+  "name": "MediaForge",
+  "short_name": "MediaForge",
+  "description": "Download MP3 and MP4 files from YouTube, Spotify, and other links.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#4ade80",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
